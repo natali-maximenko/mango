@@ -61,10 +61,8 @@ config :phoenix, :plug_init_mode, :runtime
 
 # Configure your database
 config :mango, Mango.Repo,
-  # username: "postgres",
-  # password: "postgres",
-  username: "pguser",
-  password: "9h4sx5jdp",
+  username: "postgres",
+  password: "postgres",
   database: "mango_dev",
   hostname: "localhost",
   pool_size: 10

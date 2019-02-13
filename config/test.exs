@@ -13,10 +13,8 @@ config :logger, level: :warn
 
 # Configure your database
 config :mango, Mango.Repo,
-  # username: "postgres",
-  # password: "postgres",
-  username: "pguser",
-  password: "9h4sx5jdp",
+  username: "postgres",
+  password: "postgres",
   database: "mango_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

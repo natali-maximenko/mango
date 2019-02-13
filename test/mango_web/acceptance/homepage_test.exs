@@ -1,8 +1,20 @@
 defmodule MangoWeb.HomepageTest do
-  use ExUnit.Case
+  use Mango.DataCase
   use Hound.Helpers
 
   hound_session()
+
+  setup do
+    ## GIVEN ##
+    # There are two products Apple and Tomato priced 100 and 50
+    respectively
+    # Where Apple being the only seasonal product
+    alias Mango.Repo
+    alias Mango.Catalog.Product
+    Repo.insert(%Product{name: "Tomato", price: 50, is_seasonal: false})
+    Repo.insert(%Product{name: "Apple", price: 100, is_seasonal: true})
+    :ok
+  end
 
   test "presence of featured products" do
     ## GIVEN ##
@@ -19,7 +31,7 @@ defmodule MangoWeb.HomepageTest do
     # And I expect Apple to be in the product displayed
     product = find_element(:css, ".product")
     product_name = find_within_element(product, :css, ".product_name") |> visible_text
-    product_price = find_within_element(product, :css, ".product_price") |>  visible_text
+    product_price = find_within_element(product, :css, ".product_price") |> visible_text
 
     assert product_name == "Apple"
     assert product_price == "100"
